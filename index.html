@@ -9,30 +9,35 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="overlay"></div>
-    <div class="library">
-        <div class="book">
-            Harry Potter 1 by J.K Roulling, 237, not read yet
-        </div>
-        <div class="book">
-            Harry Potter 1 by J.K Roulling, 237, not read yet
-        </div>
-        <div class="book">
-            Harry Potter 1 by J.K Roulling, 237, not read yet
-        </div>
+    <div id="overlay">
+        <form class="add-form">
+            <label>Add new book</label>
+            <input type="text" id="title" placeholder="Title">
+            <input type="text" id="author" placeholder="Author">
+            <input type="number" id="pages" placeholder="Pages">
+            <div class="have">
+                <label>Have you read it?</label>
+                <input type="checkbox" id="read" value="true">
+            </div>
+            <button type="button" id="submit">Submit</button>
+        </form>
     </div>
-    <button>click</button>
+    <div class="library">
 
-    <form class="add-form">
-        <label>Add new book</label>
-        <input type="text" id="title" placeholder="Title">
-        <input type="text" id="author" placeholder="Author">
-        <input type="number" id="pages" placeholder="Pages">
-        <div class="have">
-            <label>Have you read it?</label>
-            <input type="checkbox" id="read" name="topping" value="true">
-        </div>
-        <button type="button" id="submit">Submit</button>
-    </form>
+    </div>
+    <button type="button" id="add">click</button>
+    <div class="pre-form">
+        <!-- <form class="add-form">
+            <label>Add new book</label>
+            <input type="text" id="title" placeholder="Title">
+            <input type="text" id="author" placeholder="Author">
+            <input type="number" id="pages" placeholder="Pages">
+            <div class="have">
+                <label>Have you read it?</label>
+                <input type="checkbox" id="read" value="true">
+            </div>
+            <button type="button" id="submit">Submit</button>
+        </form> -->
+    </div>
 </body>
 </html>
