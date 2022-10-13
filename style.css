@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.book {
+    height: 60px;
+    width: 260px;
+    background-color: #b2b2b2;
+    padding: 20px;
+}
+
+.library {
+    height: 100vh;
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px;
+}
