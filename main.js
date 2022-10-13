@@ -54,3 +54,13 @@ function loopMyLybrary(library) {
 }
 
 loopMyLybrary(myLibrary);
+
+const title = document.querySelector('#title')
+const author = document.querySelector('#author')
+const pages = document.querySelector('#pages')
+const read = document.querySelector('#read')
+const buttonSubmit = document.querySelector('#submit')
+
+buttonSubmit.addEventListener('click', (event) => {
+    addBookToLibrary(Book(title.value, author.value, pages.value, read.value));
+})

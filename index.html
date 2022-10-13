@@ -23,13 +23,16 @@
     </div>
     <button>click</button>
 
-    <form>
+    <form class="add-form">
         <label>Add new book</label>
-        <input type="text" placeholder="Title">
-        <input type="text" placeholder="Author">
-        <input type="number" placeholder="Pages">
-        <label>Have you read it?</label>
-        <input type="checkbox" id="sausage" name="topping" value="sausage">
+        <input type="text" id="title" placeholder="Title">
+        <input type="text" id="author" placeholder="Author">
+        <input type="number" id="pages" placeholder="Pages">
+        <div class="have">
+            <label>Have you read it?</label>
+            <input type="checkbox" id="read" name="topping" value="true">
+        </div>
+        <button type="button" id="submit">Submit</button>
     </form>
 </body>
 </html>
