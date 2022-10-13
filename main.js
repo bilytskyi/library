@@ -39,3 +39,18 @@ const bookThree = new Book(
 addBookToLibrary(bookOne);
 addBookToLibrary(bookTwo);
 addBookToLibrary(bookThree);
+
+
+const divLibrary = document.querySelector('.library')
+
+function loopMyLybrary(library) {
+    for (let i = 0; i < library.length; i++){
+        console.log(library[i].info())
+        const bookCard = document.createElement('div')
+        bookCard.classList.add('book')
+        bookCard.textContent = library[i].info()
+        divLibrary.appendChild(bookCard)
+    }
+}
+
+loopMyLybrary(myLibrary);
