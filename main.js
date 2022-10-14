@@ -1,10 +1,12 @@
 let myLibrary = [];
+let myData = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, id) {
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
+    this.id = id
 }
 
 Book.prototype.info = function() {
@@ -40,18 +42,22 @@ function addBookToLibrary(book) {
 // addBookToLibrary(bookTwo);
 // addBookToLibrary(bookThree);
 
-
 const divLibrary = document.querySelector('.library')
 
 function loopMyLybrary(library) {
     for (let i = 0; i < library.length; i++){
-        console.log(library[i].info())
-        const bookCard = document.createElement('div')
-        bookCard.classList.add('book')
-        bookCard.textContent = library[i].info()
-        divLibrary.appendChild(bookCard)
+        if (typeof library[i] !== 'undefined') {
+            const bookCard = document.createElement('div')
+            bookCard.classList.add('book')
+            bookCard.innerHTML = `
+            <button class="delete" id="${library[i].id}">delete</button>
+            <p>${library[i].info()}</p>
+            `
+            divLibrary.appendChild(bookCard)
+        }
     }
 }
+
 
 loopMyLybrary(myLibrary);
 
@@ -65,6 +71,7 @@ const pages = document.querySelector('#pages')
 const read = document.querySelector('#read')
 const divOverlay = document.querySelector('#overlay')
 
+
 buttonAdd.addEventListener('click', (event) => {
     divOverlay.style.display = 'block'
 })
@@ -72,7 +79,7 @@ buttonAdd.addEventListener('click', (event) => {
 buttonSubmit.addEventListener('click', (event) => {
     divLibrary.innerHTML = ""
     
-    addBookToLibrary(new Book(title.value, author.value, pages.value, read.value));
+    addBookToLibrary(new Book(title.value, author.value, pages.value, read.value, myLibrary.length));
     loopMyLybrary(myLibrary);
 
     title.value = ''
@@ -81,4 +88,17 @@ buttonSubmit.addEventListener('click', (event) => {
     read.value = ''
 
     divOverlay.style.display = 'none'
+})
+
+let buttonDeletes = document.querySelectorAll('button.delete')
+window.addEventListener('mousemove', (event) => {
+    buttonDeletes = document.querySelectorAll('button.delete')
+
+    buttonDeletes.forEach((buttonDelete) => {
+        buttonDelete.addEventListener('click', (event) => {
+            divLibrary.innerHTML = ""
+            delete myLibrary[buttonDelete.getAttribute('id')]
+            loopMyLybrary(myLibrary);
+        });
+    });
 })
