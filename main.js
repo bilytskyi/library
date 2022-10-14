@@ -57,36 +57,28 @@ loopMyLybrary(myLibrary);
 
 
 const buttonAdd = document.querySelector('#add')
-const preForm = document.querySelector('.pre-form')
+
+const buttonSubmit = document.querySelector('#submit')
+const title = document.querySelector('#title')
+const author = document.querySelector('#author')
+const pages = document.querySelector('#pages')
+const read = document.querySelector('#read')
+const divOverlay = document.querySelector('#overlay')
 
 buttonAdd.addEventListener('click', (event) => {
-    preForm.innerHTML = `<form class="add-form">
-    <label>Add new book</label>
-    <input type="text" id="title" placeholder="Title">
-    <input type="text" id="author" placeholder="Author">
-    <input type="number" id="pages" placeholder="Pages">
-    <div class="have">
-        <label>Have you read it?</label>
-        <input type="checkbox" id="read" value="true">
-    </div>
-    <button type="button" id="submit">Submit</button>
-</form>`
-
-    const buttonSubmit = document.querySelector('#submit')
-    const title = document.querySelector('#title')
-    const author = document.querySelector('#author')
-    const pages = document.querySelector('#pages')
-    const read = document.querySelector('#read')
-
-    const divOverlay = document.querySelector('#overlay')
     divOverlay.style.display = 'block'
-
-    buttonSubmit.addEventListener('click', (event) => {
-        divLibrary.innerHTML = ""
-        
-        addBookToLibrary(new Book(title.value, author.value, pages.value, read.value));
-        loopMyLybrary(myLibrary);
-        preForm.innerHTML = ""
-    })
 })
 
+buttonSubmit.addEventListener('click', (event) => {
+    divLibrary.innerHTML = ""
+    
+    addBookToLibrary(new Book(title.value, author.value, pages.value, read.value));
+    loopMyLybrary(myLibrary);
+
+    title.value = ''
+    author.value = ''
+    pages.value = ''
+    read.value = ''
+
+    divOverlay.style.display = 'none'
+})
