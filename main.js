@@ -47,10 +47,15 @@ const divLibrary = document.querySelector('.library')
 function loopMyLybrary(library) {
     for (let i = 0; i < library.length; i++){
         if (typeof library[i] !== 'undefined') {
+            let text = 'not read'
+            if (library[i].read) {
+                text = 'read'
+            }
             const bookCard = document.createElement('div')
             bookCard.classList.add('book')
             bookCard.innerHTML = `
             <button class="delete" id="${library[i].id}">delete</button>
+            <button class="read" id="${library[i].id}">${text}</button>
             <p>${library[i].info()}</p>
             `
             divLibrary.appendChild(bookCard)
@@ -78,14 +83,13 @@ buttonAdd.addEventListener('click', (event) => {
 
 buttonSubmit.addEventListener('click', (event) => {
     divLibrary.innerHTML = ""
-    
-    addBookToLibrary(new Book(title.value, author.value, pages.value, read.value, myLibrary.length));
+
+    addBookToLibrary(new Book(title.value, author.value, pages.value, read.checked, myLibrary.length));
     loopMyLybrary(myLibrary);
 
     title.value = ''
     author.value = ''
     pages.value = ''
-    read.value = ''
 
     divOverlay.style.display = 'none'
 })
