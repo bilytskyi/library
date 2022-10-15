@@ -95,6 +95,8 @@ buttonSubmit.addEventListener('click', (event) => {
 })
 
 let buttonDeletes = document.querySelectorAll('button.delete')
+let buttonReads = document.querySelectorAll('button.read')
+
 window.addEventListener('mousemove', (event) => {
     buttonDeletes = document.querySelectorAll('button.delete')
 
@@ -102,6 +104,17 @@ window.addEventListener('mousemove', (event) => {
         buttonDelete.addEventListener('click', (event) => {
             divLibrary.innerHTML = ""
             delete myLibrary[buttonDelete.getAttribute('id')]
+            loopMyLybrary(myLibrary);
+        });
+    });
+
+
+    buttonReads = document.querySelectorAll('button.read')
+
+    buttonReads.forEach((buttonRead) => {
+        buttonRead.addEventListener('click', (event) => {
+            divLibrary.innerHTML = ""
+            myLibrary[buttonRead.getAttribute('id')].read = !myLibrary[buttonRead.getAttribute('id')].read;
             loopMyLybrary(myLibrary);
         });
     });
