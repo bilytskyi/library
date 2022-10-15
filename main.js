@@ -10,7 +10,11 @@ function Book(title, author, pages, read, id) {
 }
 
 Book.prototype.info = function() {
-    return `${this.title} by ${this.author}, ${this.pages}, not read yet`
+    if (this.read) {
+        return `"${this.title}" by ${this.author}, ${this.pages}, read`
+    }
+    return `"${this.title}" by ${this.author}, ${this.pages}, not read`
+    
 }
 
 function addBookToLibrary(book) {
@@ -54,9 +58,9 @@ function loopMyLybrary(library) {
             const bookCard = document.createElement('div')
             bookCard.classList.add('book')
             bookCard.innerHTML = `
+            <p>${library[i].info()}</p>
             <button class="delete" id="${library[i].id}">delete</button>
             <button class="read" id="${library[i].id}">${text}</button>
-            <p>${library[i].info()}</p>
             `
             divLibrary.appendChild(bookCard)
         }

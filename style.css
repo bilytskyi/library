@@ -7,10 +7,10 @@ body {
 }
 
 .book {
-    height: 60px;
+    height: 90px;
     width: 260px;
     background-color: #b2b2b2;
-    padding: 20px;
+    padding: 10px;
 }
 
 .header {
